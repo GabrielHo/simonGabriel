@@ -3,11 +3,11 @@ package simon;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import guiPractice8.ClickableScreen;
-import guiPractice8.component.Action;
-import guiPractice8.component.Button;
-import guiPractice8.component.TextLabel;
-import guiPractice8.component.Visible;
+import guiPractice.sampleGames.ClickableScreen;
+import guiPractice.components.Action;
+import guiPractice.components.Button;
+import guiPractice.components.TextLabel;
+import guiPractice.components.Visible;
 
 public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	
@@ -73,8 +73,8 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> visibles) {
-		addButtons();
+	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		addButtons(viewObjects);
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
 		moves = new ArrayList<MoveInterfaceGabriel>();
@@ -105,7 +105,7 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 		return null;
 	}
 
-	public void addButtons() {
+	public void addButtons(ArrayList<Visible> viewObjects) {
 		int numberOfButtons = 6;
 		Color[] colorArray = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
 		final ButtonInterfaceGabriel b = getAButton();
