@@ -2,6 +2,7 @@ package simon;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
@@ -14,11 +15,11 @@ public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 	private Color color;
 	private Action action;
 	private Color displayColor;
-	private int WIDTH = 50;
-	private int HEIGHT = 50;
+	private static int WIDTH = 50;
+	private static int HEIGHT = 50;
 
 	public ButtonJoyce(int x, int y, int w, int h) {
-		super(x, y, w, h);
+		super(0, 0, WIDTH, HEIGHT);
 	}
 
 	@Override
@@ -60,9 +61,14 @@ public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(Color.black);
+		g.drawOval(0, 0, WIDTH, HEIGHT);
 		g.setColor(displayColor);
 		g.fillOval(0, 0, WIDTH, HEIGHT);
-		
+		if(highlight){
+			g.setColor(Color.white);
+			g.fillOval(0, 0, WIDTH, HEIGHT);
+		}
 	}
 
 }
