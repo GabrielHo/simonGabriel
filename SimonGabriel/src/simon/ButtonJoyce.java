@@ -2,6 +2,7 @@ package simon;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import guiPractice.components.Action;
@@ -9,6 +10,12 @@ import guiPractice.components.Component;
 
 public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 
+	private boolean highlight;
+	private Color color;
+	private Action action;
+	private Color displayColor;
+	private int WIDTH = 50;
+	private int HEIGHT = 50;
 
 	public ButtonJoyce(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -16,32 +23,32 @@ public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
-
+		action.act();
 	}
 
 	@Override
 	public void setColor(Color color) {
-		// TODO Auto-generated method stub
-
+		this.color = color;
+		update();
 	}
 
 	@Override
 	public void setAction(Action action) {
-		// TODO Auto-generated method stub
-
+		this.action = action;
 	}
 
 	@Override
 	public void highlight() {
-		// TODO Auto-generated method stub
-
+		highlight= true;
+		displayColor = color;
+		update();
 	}
 
 	@Override
 	public void dim() {
-		// TODO Auto-generated method stub
-
+		displayColor = Color.gray;
+		highlight = false;
+		update();
 	}
 
 	@Override
@@ -51,8 +58,10 @@ public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 	}
 
 	@Override
-	public void update(Graphics2D arg0) {
-		// TODO Auto-generated method stub
+	public void update(Graphics2D g) {
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(displayColor);
+		g.fillOval(0, 0, WIDTH, HEIGHT);
 		
 	}
 
