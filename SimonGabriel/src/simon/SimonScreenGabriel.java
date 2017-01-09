@@ -8,8 +8,6 @@ import guiPractice8.component.Action;
 import guiPractice8.component.Button;
 import guiPractice8.component.TextLabel;
 import guiPractice8.component.Visible;
-import guiPractice8.whackAMole.MoleInterface;
-import guiPractice8.whackAMole.PlayerInterface;
 
 public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	
@@ -90,9 +88,14 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceGabriel randomMove() {
-		ButtonInterfaceGabriel b;
+		ButtonInterfaceGabriel b = null;
 		//code that randomly selects a ButtonInterfaceX
 		return getMove(b);//partner codes this part
+	}
+
+	private MoveInterfaceGabriel getMove(ButtonInterfaceGabriel b) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private ProgressInterfaceGabriel getProgress() {
@@ -105,13 +108,11 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	public void addButtons() {
 		int numberOfButtons = 6;
 		Color[] colorArray = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
-		button = new ButtonInterfaceGabriel[numberOfButtons];
+		final ButtonInterfaceGabriel b = getAButton();
 		for(int i =0; i <numberOfButtons;i++){
-			button[i] = getAButton();//need partner to finish
-			button[i] = setColor(colorArray[i]);//need partner to finish
-			button[i] = setX(250);//need partner to finish
-			button[i] = setY(500);//need partner to finish
-			final ButtonInterfaceGabriel b = getButton();
+			b.setColor(colorArray[i]);//need partner to finish
+			b.setX(250);//need partner to finish
+			b.setY(500);//need partner to finish
 			b.setAction(new Action(){
 				public void act(){
 					if(acceptingInput){
@@ -145,6 +146,11 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 			});
 			viewObjects.add(b);
 		}
+	}
+
+	private ButtonInterfaceGabriel getAButton() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 		
 
