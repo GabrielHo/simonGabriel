@@ -6,8 +6,8 @@ import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
-import guiPractice.components.Action;
-import guiPractice.components.Component;
+import guiPractice8.component.Action;
+import guiPractice8.component.Component;
 
 public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 
@@ -55,7 +55,6 @@ public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 	@Override
 	public boolean isHovered(int x, int y) {
 		double distance = Math.sqrt(Math.pow(x-(getX()+WIDTH/2), 2)+Math.pow(y-(getY()+HEIGHT/2), 2));
-//		System.out.println(distance + " px away from "+name);
 		return distance < WIDTH/2;
 	}
 
@@ -68,20 +67,7 @@ public class ButtonJoyce extends Component implements ButtonInterfaceGabriel {
 		g.setColor(Color.black);
 		g.drawOval(0, 0, WIDTH-1, HEIGHT-1);
 		if(highlight){
-//			g.setColor(Color.white);
-//			g.fillOval(0, 0, WIDTH, HEIGHT);
-//			g.setColor(Color.white);
-//			Polygon p = new Polygon();
-//			
-//			int s = (int)(5/8.0 * WIDTH);
-//			int t = (int)(1.0/5*HEIGHT)+4;
-//			p.addPoint(s-4, t-4);
-//			p.addPoint(s+7, t-2);
-//			p.addPoint(s+10, t);
-//			p.addPoint(s+14, t+10);
-//			p.addPoint(s+12, t+14);
-//			p.addPoint(s+8, t+3);
-//			g.fill(p);
+			
 		}
 	}
 

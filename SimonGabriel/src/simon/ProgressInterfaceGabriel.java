@@ -1,6 +1,6 @@
 package simon;
 
-import guiPractice.components.Visible;
+import guiPractice8.component.Visible;
 
 public interface ProgressInterfaceGabriel extends Visible{
 	

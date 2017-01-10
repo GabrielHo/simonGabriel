@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
-import guiPractice.components.Component;
+import guiPractice8.component.Component;
 
 public class ProgressJoyce extends Component implements ProgressInterfaceGabriel {
 
