@@ -41,10 +41,10 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 		moves.add(randomMove());
 		progress.setRound(roundNumber);
 		progress.setSequenceSize(moves.size());
-		changeText("Simon's turn.");
+		changeText("not ur turn.");
 		label.setText("");
 		playSequence();
-		changeText("Your turn.");
+		changeText("ur turn.");
 		acceptingInput = true;
 		sequenceIndex =0;
 		
@@ -81,7 +81,7 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		addButtons(viewObjects);
 		progress = getProgress();
-		label = new TextLabel(130,230,300,40,"Let's play Simon!");
+		label = new TextLabel(300,150,300,40,"Let's play Simon!");
 		moves = new ArrayList<MoveInterfaceGabriel>();
 		//add 2 moves to start
 		lastSelectedButton = -1;
@@ -118,11 +118,11 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 		//final ButtonInterfaceGabriel b = getAButton();
 		for(int i =0; i <numberOfButtons;i++){
 			button[i] = getAButton();
-			button[i].setColor(colorArray[i]);//need partner to finish
-			//button[i].setX(250);//need partner to finish
-			//button[i].setY(500);//need partner to finish
-			button[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
-			button[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
+			button[i].setColor(colorArray[i]);
+			//button[i].setX(100 + i*100);
+			//button[i].setY(250);
+			button[i].setX(320 + (int)(100*Math.cos(i*2*Math.PI/(2*numberOfButtons))));
+			button[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(2*numberOfButtons))));
 			final ButtonInterfaceGabriel b = button[i];
 			b.dim();
 			b.setAction(new Action(){
