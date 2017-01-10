@@ -45,18 +45,22 @@ public class ProgressJoyce extends Component implements ProgressInterfaceGabriel
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		FontMetrics fm = g.getFontMetrics();
 		if(gameOver){
-			g.setColor(new Color(255,55,90));
-			g.fillRect(0, 0, WIDTH, HEIGHT);
-			g.setColor(Color.white);
-			String go = "GAME OVER!";
+//			g.setColor(Color.white);
+//			g.fillRect(0, 0, WIDTH, HEIGHT);
+			g.setColor(Color.red);
+			g.fillOval(0, 0, WIDTH, HEIGHT);
+			g.setColor(Color.black);
+			String go = "you're a fool";
 			g.drawString(go, (WIDTH - fm.stringWidth(go))/2, 20);
 			g.drawString(sequence, (WIDTH - fm.stringWidth(sequence))/2, 40);
 
 		}else{
-			g.setColor(new Color(220,255,230));
-			g.fillRect(0, 0, WIDTH, HEIGHT);
+//			g.setColor(Color.green);
+//			g.fillRect(0, 0, WIDTH, HEIGHT);
+			g.setColor(Color.yellow);
+			g.fillOval(0, 0, WIDTH, HEIGHT);
 			g.setColor(Color.black);
-			g.drawRect(0, 0, WIDTH-1, HEIGHT-1);
+			//g.drawOval(0, 0, WIDTH, HEIGHT);
 			if(round !=null && sequence != null){
 
 				g.drawString(round, (WIDTH - fm.stringWidth(round))/2, 20);
