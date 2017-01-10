@@ -2,14 +2,15 @@ package simon;
 
 public class MoveJoyce implements MoveInterfaceGabriel {
 
-	public MoveJoyce() {
-		// TODO Auto-generated constructor stub
+	private ButtonInterfaceGabriel b;	
+	
+	public MoveJoyce(ButtonInterfaceGabriel b) {
+		this.b = b;
 	}
 
 	@Override
 	public ButtonInterfaceGabriel getButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return b;
 	}
 
 }
