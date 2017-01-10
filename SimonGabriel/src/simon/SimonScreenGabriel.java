@@ -53,23 +53,28 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	private void playSequence() {
 		ButtonInterfaceGabriel b =null;
 		for(MoveInterfaceGabriel sequence: moves){
-			if(b!=null){
+			if(b!=null)//{
 				b.dim();
 				b=sequence.getButton();
 				b.highlight();
-				int sleepTime = (int)(long)(2000*(2.0/roundNumber+2));
+				int sleepTime = (int)(long)(2000*(2.0/(roundNumber+2)));
 				try {
 					Thread.sleep(sleepTime);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
+			//}
 		}
 		b.dim();
 	}
 
 	private void changeText(String string) {
-		label.setText(string);
+		try{
+			label.setText(string);
+			Thread.sleep(1000);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -88,9 +93,13 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceGabriel randomMove() {
-		ButtonInterfaceGabriel b = null;
-		//code that randomly selects a ButtonInterfaceX
-		return getMove(b);//partner codes this part
+		//ButtonInterfaceGabriel b = null;
+		int choose = (int) (Math.random()*button.length);
+		while(choose == lastSelectedButton){
+			choose = (int) (Math.random()*button.length);
+		}
+		lastSelectedButton = choose;
+		return new MoveJoyce(button[choose]);
 	}
 
 	private MoveInterfaceGabriel getMove(ButtonInterfaceGabriel b) {
@@ -99,20 +108,23 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	}
 
 	private ProgressInterfaceGabriel getProgress() {
-		/**
-		Placeholder until partner finishes implementation of ProgressInterface
-		*/
-		return null;
+		return new ProgressJoyce();
 	}
 
 	public void addButtons(ArrayList<Visible> viewObjects) {
 		int numberOfButtons = 6;
 		Color[] colorArray = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
-		final ButtonInterfaceGabriel b = getAButton();
+		button = new ButtonInterfaceGabriel[numberOfButtons];
+		//final ButtonInterfaceGabriel b = getAButton();
 		for(int i =0; i <numberOfButtons;i++){
-			b.setColor(colorArray[i]);//need partner to finish
-			b.setX(250);//need partner to finish
-			b.setY(500);//need partner to finish
+			button[i] = getAButton();
+			button[i].setColor(colorArray[i]);//need partner to finish
+			//button[i].setX(250);//need partner to finish
+			//button[i].setY(500);//need partner to finish
+			button[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
+			button[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
+			final ButtonInterfaceGabriel b = button[i];
+			b.dim();
 			b.setAction(new Action(){
 				public void act(){
 					if(acceptingInput){
@@ -129,6 +141,8 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 							}
 							
 						});
+						
+						blink.start();
 						
 						if(acceptingInput && moves.get(sequenceIndex).getButton() == b){
 							sequenceIndex++;
@@ -149,8 +163,7 @@ public class SimonScreenGabriel extends ClickableScreen implements Runnable {
 	}
 
 	private ButtonInterfaceGabriel getAButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ButtonJoyce();
 	}
 		
 
